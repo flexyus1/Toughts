@@ -14,6 +14,7 @@ const User = require('./models/User')
 
 //Import Routes
 const toughtsRoutes = require('./routes/toughtsRoutes')
+const authRoute = require('./routes/authRoute')
 
 //Import Controller
 const ToughtsController = require('./controllers/ToughtsController')
@@ -71,14 +72,15 @@ app.use((req, res, next) => {
 
 //Routes
 app.use('/toughts', toughtsRoutes)
+app.use('/', authRoute)
 
 app.get('/', ToughtsController.showToughts)
 
 
 
 conn
-  .sync({force:true})
-  //.sync()
+  //.sync({force:true})
+  .sync()
   .then(() => {
     app.listen(3000)
   })
