@@ -79,6 +79,7 @@ app.get('/', ToughtsController.showToughts)
 
 
 conn
+  //se essa linha for ativa, todo o banco de dados sera excluido e recriado do zero, MUITO CUIDADO
   //.sync({force:true})
   .sync()
   .then(() => {
